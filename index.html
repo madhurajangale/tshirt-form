@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeeCrafts</title>
+    <script>
+        function validateForm() {
+            var phone = document.getElementById("phone").value;
+            if (phone.length != 10 || isNaN(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+            var comments = document.getElementById("comments").value;
+            if (comments.length > 200) {
+                alert("Comments should not exceed 200 characters.");
+                return false;
+            }
+            return true;
+        }
+
+        function processOrder(event) {
+            event.preventDefault(); 
+
+            if (!validateForm()) {
+                return; 
+            }
+
+            var name = document.getElementById("name").value;
+            var tagline = document.getElementById("tagline").value;
+            var color = document.getElementById("color").value;
+            var size = document.getElementById("size").value;
+            var quantity = document.getElementById("quantity").value;
+            var phone = document.getElementById("phone").value;
+            var receipt = `
+                <h2>Order Confirmation</h2>
+                <p>Thank you, ${name}, for your order!</p>
+                <p><strong>Tagline:</strong> ${tagline}</p>
+                <p><strong>Color:</strong> ${color}</p>
+                <p><strong>Size:</strong> ${size}</p>
+                <p><strong>Quantity:</strong> ${quantity}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p>Your order is placed.</p>
+            `;
+            document.getElementById("content").innerHTML = receipt;
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><img src="rough (1).png" height="90px" width="200px"></td>
+            <td><h1 align="center"><font color="DarkBlue">Your Style, Your Brand. Design Custom T-Shirts That Make a Lasting Impression.</font></h1></td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table>
+        <tr>
+            <td><img width="345px" height="300px" src="tshirt1.jpg"></td>
+            <td><img width="345px" height="300px" src="tshirt2.jpeg"></td>
+            <td><img width="345px" height="300px" src="tshirt3.jpg"></td>
+            <td><img width="345px" height="300px" src="tshirt4.jpg"></td>
+        </tr>
+    </table>
+    <br>
+    <div id="content">
+    <form name="orderForm" onsubmit="processOrder(event)">
+        <fieldset align="center">
+            <legend><font color="brown">T-Shirt Details</font></legend>
+            <br>
+            <label for="tagline">Tagline:</label>
+            <input type="text" id="tagline" name="tagline" placeholder="Enter your tagline here" required><br><br>
+
+            <label for="color">Color:</label>
+            <select id="color" name="color" required>
+                <option value="">Select a color</option>
+                <option>Red</option>
+                <option>Blue</option>
+                <option>Green</option>
+                <option>Black</option>
+                <option>White</option>
+            </select><br><br>
+
+            <label for="size">Size:</label>
+            <select id="size" name="size" required>
+                <option value="">Select a size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>X-Large</option>
+            </select><br><br>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="1" required><br><br>
+
+            <label for="delivery-date">Delivery Date:</label>
+            <input type="date" id="delivery-date" name="delivery-date" required><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset align="center">
+            <legend><font color="brown">Delivery Details</font></legend>
+            <br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Recipient's name" required><br><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Recipient's address" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Recipient's email" required><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Recipient's phone number" required pattern="[1-9]{10}"><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset align="center">
+            <legend><font color="brown">Additional Comments</font></legend>
+            <br>
+            <label for="comments">Comments:</label><br>
+            <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Any special instructions or comments"></textarea><br><br>
+        </fieldset>
+
+        <br>
+        <div align="center">
+            <button type="submit">Submit Order</button>
+            <input type="reset" value="Reset Form">
+        </div>
+    </form>
+
+    <br>
+    <hr>
+    <br>
+</div>
+    
+
+    <h3 align="center">Turn your idea into a product in just a few clicks</h3>
+</body>
+</html>
